@@ -2,9 +2,20 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 
 	_ "modernc.org/sqlite"
 )
+
+type Sale struct {
+	Product int
+	Volume  int
+	Date    string
+}
+
+func (s Sale) String() string {
+	return fmt.Sprintf("Product: %d Volume: %d Date:%s", s.Product, s.Volume, s.Date)
+}
 
 func main() {
 	db, err := sql.Open("sqlite", "demo.db")
